@@ -1,0 +1,29 @@
+<div class="user-profile-container">
+  <header class="header" style="margin-bottom: 3rem">
+    <div class="header-left">
+      <p>MyGitHub</p>
+    </div>
+
+    <div class="header-right" *ngIf="auth.user$ | async as user">
+      <img *ngIf="user.picture" [src]="user.picture" alt="{{ user.name }}" class="user-avatar" />
+    </div>
+  </header>
+  <div class="Greeting">Welcome back {{ firstName }}!</div>
+  <div class="user-profile" *ngIf="auth.user$ | async as user">
+    <img *ngIf="user.picture" [src]="user.picture" alt="{{ user.name }}" class="user-avatar" />
+    <div class="user-info">
+      <h2 class="user-name">{{ user.name }}</h2>
+      <p class="user-email">{{ user.email }}</p>
+    </div>
+  </div>
+  <div class="user-profile" *ngIf="auth.user$ | async as user">
+    <div class="user-repos" *ngIf="repos.length > 0">
+      <h3>Public Repositories</h3>
+      <ul>
+        <li *ngFor="let repo of repos">
+          <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

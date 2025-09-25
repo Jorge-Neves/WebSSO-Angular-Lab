@@ -6,9 +6,9 @@ import { AuthService } from '@auth0/auth0-angular';
   selector: 'app-auth-button',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './authbutton.html',
-  styleUrls: ['./authbutton.css'],
+  templateUrl: './auth.html',
+  styleUrls: ['./auth.css'],
 })
-export class AuthButtonComponent {
+export class AuthComponent {
   constructor(public auth: AuthService, @Inject(DOCUMENT) public document: Document) {}
 }

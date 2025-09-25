@@ -1,0 +1,25 @@
+<div class="auth-page">
+  <header class="header" style="margin-bottom: 3rem">
+    <div class="header-left">
+      <p>MyGitHub</p>
+    </div>
+
+    <div class="header-right" *ngIf="auth.user$ | async as user">
+      <img *ngIf="user.picture" [src]="user.picture" alt="{{ user.name }}" class="user-avatar" />
+    </div>
+  </header>
+  <div class="auth-container">
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <button
+        class="auth-btn logout"
+        (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })"
+      >
+        Log Out
+      </button>
+    </ng-container>
+
+    <ng-template #loggedOut>
+      <button class="auth-btn login" (click)="auth.loginWithRedirect()">Log In</button>
+    </ng-template>
+  </div>
+</div>
